@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UITableViewController {
 	
-	let places = Place.getPlaces()
+	var places = Place.getPlaces()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class MainViewController: UITableViewController {
 		let place = places[indexPath.row]
 
 		cell.nameLabel.text = place.name
-		cell.imageOfPlace.image = UIImage(named: place.image)
+		cell.imageOfPlace.image = place.image
 		cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
 		cell.locationLabel.text = place.location
 		cell.typeLabel.text = place.type
@@ -46,8 +46,11 @@ class MainViewController: UITableViewController {
     }
     */
 	
-	@IBAction func cancelAction(_ segue: UIStoryboardSegue) {
-		
+	@IBAction func unwind(_ segue: UIStoryboardSegue) {
+		guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
+		newPlaceVC.saveNewPlace()
+		places.append(newPlaceVC.newPlace!)
+		tableView.reloadData()
 	}
 
 }

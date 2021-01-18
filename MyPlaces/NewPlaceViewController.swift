@@ -9,12 +9,21 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController {
 
-	@IBOutlet weak var imageOfPlace: UIImageView!
+	@IBOutlet weak var placeImage: UIImageView!
+	@IBOutlet weak var saveButton: UIBarButtonItem!
+	@IBOutlet weak var placeName: UITextField!
+	@IBOutlet weak var placeLocation: UITextField!
+	@IBOutlet weak var placeType: UITextField!
+	
+	var newPlace: Place?
+	var imageIsChanged = false
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
 		tableView.tableFooterView = UIView()
+		
+		placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -49,6 +58,19 @@ class NewPlaceViewController: UITableViewController {
 			view.endEditing(true)
 		}
 	}
+	
+	func saveNewPlace() {
+		if !imageIsChanged {
+			newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, image: UIImage(systemName: "pin.circle"))
+		} else {
+			newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, image: placeImage.image)
+		}
+	}
+	
+	@IBAction
+	func cancelAction() {
+		dismiss(animated: true, completion: nil)
+	}
 
     /*
     // MARK: - Navigation
@@ -68,6 +90,15 @@ extension NewPlaceViewController: UITextFieldDelegate {
 		textField.resignFirstResponder()
 		return true
 	}
+	@objc
+	private func textFieldChanged() {
+		if placeName.text == nil || placeName.text!.isEmpty {
+			saveButton.isEnabled = false
+		} else {
+			saveButton.isEnabled = true
+		}
+	}
+	
 }
 
 // MARK: Work with image
@@ -85,8 +116,9 @@ extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
 	}
 	
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-		imageOfPlace.image = info[.editedImage] as? UIImage
-		imageOfPlace.contentMode = .scaleAspectFill
+		placeImage.image = info[.editedImage] as? UIImage
+		placeImage.contentMode = .scaleAspectFill
+		imageIsChanged = true
 		dismiss(animated: true, completion: nil)
 	}
 	
