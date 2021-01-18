@@ -14,6 +14,7 @@
 		FE24A65125B5BF080021EA0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE24A64F25B5BF080021EA0A /* LaunchScreen.storyboard */; };
 		FE24A65D25B5C2A30021EA0A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE24A65C25B5C2A30021EA0A /* MainViewController.swift */; };
 		FE24A66025B5D1CD0021EA0A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE24A65F25B5D1CD0021EA0A /* CustomTableViewCell.swift */; };
+		FE24A66325B5D65B0021EA0A /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE24A66225B5D65B0021EA0A /* PlaceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FE24A65225B5BF080021EA0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE24A65C25B5C2A30021EA0A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FE24A65F25B5D1CD0021EA0A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		FE24A66225B5D65B0021EA0A /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				FE24A64425B5BF080021EA0A /* AppDelegate.swift */,
 				FE24A64625B5BF080021EA0A /* SceneDelegate.swift */,
 				FE24A65C25B5C2A30021EA0A /* MainViewController.swift */,
+				FE24A66225B5D65B0021EA0A /* PlaceModel.swift */,
 				FE24A65F25B5D1CD0021EA0A /* CustomTableViewCell.swift */,
 				FE24A64A25B5BF080021EA0A /* Main.storyboard */,
 				FE24A64D25B5BF080021EA0A /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 			files = (
 				FE24A65D25B5C2A30021EA0A /* MainViewController.swift in Sources */,
 				FE24A64525B5BF080021EA0A /* AppDelegate.swift in Sources */,
+				FE24A66325B5D65B0021EA0A /* PlaceModel.swift in Sources */,
 				FE24A66025B5D1CD0021EA0A /* CustomTableViewCell.swift in Sources */,
 				FE24A64725B5BF080021EA0A /* SceneDelegate.swift in Sources */,
 			);
