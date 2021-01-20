@@ -82,6 +82,9 @@
                                     <segment title="Date"/>
                                     <segment title="Name"/>
                                 </segments>
+                                <connections>
+                                    <action selector="sortSelection:" destination="wqO-vf-mgI" eventType="valueChanged" id="Lif-od-APZ"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BCc-dz-Qbu"/>
@@ -97,7 +100,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Places" id="hBj-Eh-zBg">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="SH6-lv-1JF"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrow.down" catalog="system" id="SH6-lv-1JF">
+                            <connections>
+                                <action selector="reverseSorting:" destination="wqO-vf-mgI" id="Kh8-aM-o10"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iXn-pm-nVk">
                             <connections>
                                 <segue destination="T2e-m4-Z7F" kind="presentation" id="rac-S2-PYf"/>
@@ -105,6 +112,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="reversedSortingButton" destination="SH6-lv-1JF" id="ENJ-Nz-KT7"/>
                         <outlet property="segmentedControl" destination="3F8-uk-znt" id="dop-ZE-5NP"/>
                         <outlet property="tableView" destination="JZC-0z-WvP" id="3PS-F6-j4M"/>
                     </connections>
@@ -329,7 +337,7 @@
         <segue reference="oPe-cD-LTJ"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="AZ" width="25" height="24"/>
+        <image name="arrow.down" catalog="system" width="120" height="128"/>
         <image name="placeholder" width="920" height="920"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

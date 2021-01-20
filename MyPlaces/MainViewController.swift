@@ -14,15 +14,37 @@ class MainViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var segmentedControl: UISegmentedControl!
+	@IBOutlet weak var reversedSortingButton: UIBarButtonItem!
 	
+	var ascendingSorting = true
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		tableView.dataSource = self
 		tableView.delegate = self
+//		navigationItem.leftBarButtonItem = UIBarButtonItem
 		
-		 places = realm.objects(Place.self)
+		places = realm.objects(Place.self)
     }
+	
+	@IBAction func sortSelection(_ sender: UISegmentedControl) {
+		sorting()
+	}
+	
+	@IBAction func reverseSorting(_ sender: UIBarButtonItem) {
+		ascendingSorting.toggle()
+		reversedSortingButton.image = ascendingSorting ?  UIImage(systemName: "arrow.down") : UIImage(systemName: "arrow.up")
+		sorting()
+	}
+	
+	private func sorting() {
+		if segmentedControl.selectedSegmentIndex == 0 {
+			places = places.sorted(byKeyPath: "date", ascending: ascendingSorting)
+		} else {
+			places = places.sorted(byKeyPath: "name", ascending: ascendingSorting)
+		}
+		tableView.reloadData()
+	}
 	
 	// MARK: - Navigation
 
