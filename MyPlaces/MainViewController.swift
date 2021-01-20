@@ -8,23 +8,51 @@
 import UIKit
 import RealmSwift
 
-class MainViewController: UITableViewController {
+class MainViewController: UIViewController {
 	
 	var places: Results<Place>!
-
+	
+	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var segmentedControl: UISegmentedControl!
+	
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		tableView.dataSource = self
+		tableView.delegate = self
 		
 		 places = realm.objects(Place.self)
     }
+	
+	// MARK: - Navigation
 
-    // MARK: - Table view data source
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		switch segue.identifier {
+		case "showDetail":
+			guard let index = tableView.indexPathForSelectedRow?.row,
+				  let destVC = segue.destination as? NewPlaceViewController
+			else { return }
+			destVC.currentPlace = places[index]
+		default:
+			return
+		}
+	}
+	
+	@IBAction func unwind(_ segue: UIStoryboardSegue) {
+		guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
+		newPlaceVC.savePlace()
+		tableView.reloadData()
+	}
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+}
+
+extension MainViewController: UITableViewDataSource {
+
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return places.isEmpty ? 0 : places.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
 		let place = places[indexPath.row]
 		// TO DO: - Refactor
@@ -37,10 +65,11 @@ class MainViewController: UITableViewController {
 
         return cell
     }
-	
-	// MARK: - Table view delegate
+}
 
-	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+extension MainViewController: UITableViewDelegate {
+
+	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		let place = places[indexPath.row]
 		let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completion) in
 			StorageManager.deleteObject(place)
@@ -51,25 +80,5 @@ class MainViewController: UITableViewController {
 		return UISwipeActionsConfiguration(actions: [deleteAction])
 		
 	}
-	
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		switch segue.identifier {
-		case "showDetail":
-			guard let index = tableView.indexPathForSelectedRow?.row,
-				  let destVC = segue.destination as? NewPlaceViewController
-			else { return }
-			destVC.currentPlace = places[index]
-		default:
-			return
-		}
-    }
-	
-	@IBAction func unwind(_ segue: UIStoryboardSegue) {
-		guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
-		newPlaceVC.savePlace()
-		tableView.reloadData()
-	}
-
 }
+
