@@ -15,12 +15,11 @@ class NewPlaceViewController: UITableViewController {
 	@IBOutlet weak var placeLocation: UITextField!
 	@IBOutlet weak var placeType: UITextField!
 	
-	var newPlace: Place?
 	var imageIsChanged = false
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		
 		tableView.tableFooterView = UIView()
 		
 		placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
@@ -60,11 +59,14 @@ class NewPlaceViewController: UITableViewController {
 	}
 	
 	func saveNewPlace() {
-		if !imageIsChanged {
-			newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, image: UIImage(systemName: "pin.circle"))
-		} else {
-			newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, image: placeImage.image)
-		}
+		let imageData = !imageIsChanged ? UIImage(systemName: "pin.circle")?.pngData() : placeImage.image?.pngData()
+		
+		let newPlace = Place(name: placeName.text!,
+							 location: placeLocation.text!,
+							 type: placeType.text!,
+							 imageData: imageData)
+		
+		StorageManager.saveObject(newPlace)
 	}
 	
 	@IBAction
