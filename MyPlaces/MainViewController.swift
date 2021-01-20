@@ -40,19 +40,35 @@ class MainViewController: UITableViewController {
 	
 	// MARK: - Table view delegate
 
-    /*
+	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		let place = places[indexPath.row]
+		let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completion) in
+			StorageManager.deleteObject(place)
+			tableView.deleteRows(at: [indexPath], with: .automatic)
+			completion(true)
+		}
+		deleteAction.image = UIImage(systemName: "trash")
+		return UISwipeActionsConfiguration(actions: [deleteAction])
+		
+	}
+	
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+		switch segue.identifier {
+		case "showDetail":
+			guard let index = tableView.indexPathForSelectedRow?.row,
+				  let destVC = segue.destination as? NewPlaceViewController
+			else { return }
+			destVC.currentPlace = places[index]
+		default:
+			return
+		}
     }
-    */
 	
 	@IBAction func unwind(_ segue: UIStoryboardSegue) {
 		guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
-		newPlaceVC.saveNewPlace()
+		newPlaceVC.savePlace()
 		tableView.reloadData()
 	}
 

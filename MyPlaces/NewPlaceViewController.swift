@@ -15,6 +15,7 @@ class NewPlaceViewController: UITableViewController {
 	@IBOutlet weak var placeLocation: UITextField!
 	@IBOutlet weak var placeType: UITextField!
 	
+	var currentPlace: Place?
 	var imageIsChanged = false
 	
     override func viewDidLoad() {
@@ -23,6 +24,8 @@ class NewPlaceViewController: UITableViewController {
 		tableView.tableFooterView = UIView()
 		
 		placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+		
+		setupEditScreen()
     }
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -58,20 +61,50 @@ class NewPlaceViewController: UITableViewController {
 		}
 	}
 	
-	func saveNewPlace() {
+	func savePlace() {
 		let imageData = !imageIsChanged ? UIImage(systemName: "pin.circle")?.pngData() : placeImage.image?.pngData()
 		
 		let newPlace = Place(name: placeName.text!,
 							 location: placeLocation.text!,
 							 type: placeType.text!,
 							 imageData: imageData)
-		
-		StorageManager.saveObject(newPlace)
+		if currentPlace != nil {
+			try! realm.write {
+				currentPlace?.name = newPlace.name
+				currentPlace?.location = newPlace.location
+				currentPlace?.type = newPlace.type
+				currentPlace?.imageData = newPlace.imageData
+			}
+		} else {
+			StorageManager.saveObject(newPlace)
+		}
 	}
 	
 	@IBAction
 	func cancelAction() {
 		dismiss(animated: true, completion: nil)
+	}
+	
+	private func setupEditScreen() {
+		guard let currentPlace = currentPlace,
+			  let data = currentPlace.imageData,
+			  let image = UIImage(data: data)
+		else { return }
+		setupNavBar()
+		
+		placeImage.image = image
+		placeName.text = currentPlace.name
+		placeLocation.text = currentPlace.location
+		placeType.text = currentPlace.type
+	}
+	
+	private func setupNavBar() {
+		if let topItem = navigationController?.navigationBar.topItem {
+			topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+		}
+		navigationItem.leftBarButtonItem = nil
+		title = currentPlace?.name
+		saveButton.isEnabled = true
 	}
 
     /*
