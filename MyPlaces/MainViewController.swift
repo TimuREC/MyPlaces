@@ -10,19 +10,32 @@ import RealmSwift
 
 class MainViewController: UIViewController {
 	
-	var places: Results<Place>!
+	private let searchController = UISearchController(searchResultsController: nil)
+	private var places: Results<Place>!
+	private var filteredPlaces: Results<Place>!
+	private var ascendingSorting = true
+	private var searchBarIsEmpty: Bool {
+		guard let text = searchController.searchBar.text else { return false }
+		return text.isEmpty
+	}
+	private var isFiltering: Bool {
+		return searchController.isActive && !searchBarIsEmpty
+	}
 	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var segmentedControl: UISegmentedControl!
 	@IBOutlet weak var reversedSortingButton: UIBarButtonItem!
 	
-	var ascendingSorting = true
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.dataSource = self
 		tableView.delegate = self
-//		navigationItem.leftBarButtonItem = UIBarButtonItem
+		
+		searchController.searchResultsUpdater = self
+		searchController.obscuresBackgroundDuringPresentation = false
+		searchController.searchBar.placeholder = "Search"
+		navigationItem.searchController = searchController
+		definesPresentationContext = true
 		
 		places = realm.objects(Place.self)
     }
@@ -54,7 +67,7 @@ class MainViewController: UIViewController {
 			guard let index = tableView.indexPathForSelectedRow?.row,
 				  let destVC = segue.destination as? NewPlaceViewController
 			else { return }
-			destVC.currentPlace = places[index]
+			destVC.currentPlace = isFiltering ? filteredPlaces[index] : places[index]
 		default:
 			return
 		}
@@ -68,15 +81,34 @@ class MainViewController: UIViewController {
 
 }
 
+extension MainViewController: UISearchResultsUpdating {
+	
+	func updateSearchResults(for searchController: UISearchController) {
+		filterContentForSearchText(searchController.searchBar.text!)
+	}
+	
+	private func filterContentForSearchText(_ searchText: String) {
+		filteredPlaces = places.filter("name CONTAINS[c] %@ OR location CONTAINS[c] %@ OR type CONTAINS[c] %@", searchText, searchText, searchText)
+		tableView.reloadData()
+	}
+	
+}
+
 extension MainViewController: UITableViewDataSource {
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return places.isEmpty ? 0 : places.count
+		if isFiltering {
+			return filteredPlaces.count
+		} else {
+			return places.isEmpty ? 0 : places.count
+		}
     }
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-		let place = places[indexPath.row]
+		
+		let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
+		
 		// TO DO: - Refactor
 		cell.nameLabel.text = place.name
 		cell.locationLabel.text = place.location
