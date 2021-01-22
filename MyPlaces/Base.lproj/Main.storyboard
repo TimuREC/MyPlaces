@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JZC-0z-WvP">
-                                <rect key="frame" x="0.0" y="119" width="414" height="743"/>
+                                <rect key="frame" x="0.0" y="119" width="414" height="777"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="tQe-ZH-fdS" customClass="CustomTableViewCell" customModule="MyPlaces" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="tQe-ZH-fdS" customClass="CustomTableViewCell" customModule="MyPlaces" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tQe-ZH-fdS" id="WjH-jf-1sy">
@@ -95,7 +95,7 @@
                             <constraint firstAttribute="trailing" secondItem="3F8-uk-znt" secondAttribute="trailing" id="AGl-8v-5KE"/>
                             <constraint firstItem="JZC-0z-WvP" firstAttribute="top" secondItem="3F8-uk-znt" secondAttribute="bottom" id="EM6-w6-JwZ"/>
                             <constraint firstItem="JZC-0z-WvP" firstAttribute="leading" secondItem="BCc-dz-Qbu" secondAttribute="leading" id="dLz-KR-Nzz"/>
-                            <constraint firstItem="BCc-dz-Qbu" firstAttribute="bottom" secondItem="JZC-0z-WvP" secondAttribute="bottom" id="j2V-zn-OLA"/>
+                            <constraint firstAttribute="bottom" secondItem="JZC-0z-WvP" secondAttribute="bottom" id="j2V-zn-OLA"/>
                             <constraint firstItem="BCc-dz-Qbu" firstAttribute="trailing" secondItem="JZC-0z-WvP" secondAttribute="trailing" id="nd0-5P-71U"/>
                         </constraints>
                     </view>
@@ -259,6 +259,23 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="140" id="mtt-f3-4Tr">
+                                        <rect key="frame" x="0.0" y="503" width="414" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mtt-f3-4Tr" id="ma0-VD-L3u">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="252" placeholderIntrinsicHeight="44" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qZq-v9-MFj" customClass="RatingControl" customModule="MyPlaces" customModuleProvider="target">
+                                                    <rect key="frame" x="81" y="48" width="252" height="44"/>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qZq-v9-MFj" firstAttribute="centerY" secondItem="ma0-VD-L3u" secondAttribute="centerY" id="iHf-bc-6TO"/>
+                                                <constraint firstItem="qZq-v9-MFj" firstAttribute="centerX" secondItem="ma0-VD-L3u" secondAttribute="centerX" id="z39-FC-Xnn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -290,7 +307,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C68-Yu-z8p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="nuw-P7-m8o" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2239" y="74"/>
+            <point key="canvasLocation" x="2237.68115942029" y="73.660714285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2MC-2I-I5n">
@@ -333,12 +350,17 @@
             <point key="canvasLocation" x="1449" y="-311"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="qZq-v9-MFj">
+            <size key="intrinsicContentSize" width="252" height="44"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="oPe-cD-LTJ"/>
+        <segue reference="FcD-Zh-UQq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down" catalog="system" width="120" height="128"/>
-        <image name="placeholder" width="920" height="920"/>
+        <image name="placeholder" width="460" height="460"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

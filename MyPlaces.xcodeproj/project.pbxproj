@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		04D3C743FC8976A63F3301D7 /* Pods_MyPlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6696E5A7E34CD2C9A8A01828 /* Pods_MyPlaces.framework */; };
+		FE1EE87F25BB22B200DBF01B /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1EE87E25BB22B200DBF01B /* RatingControl.swift */; };
 		FE24A64525B5BF080021EA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE24A64425B5BF080021EA0A /* AppDelegate.swift */; };
 		FE24A64725B5BF080021EA0A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE24A64625B5BF080021EA0A /* SceneDelegate.swift */; };
 		FE24A64C25B5BF080021EA0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE24A64A25B5BF080021EA0A /* Main.storyboard */; };
-		FE24A64E25B5BF080021EA0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE24A64D25B5BF080021EA0A /* Assets.xcassets */; };
 		FE24A65125B5BF080021EA0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE24A64F25B5BF080021EA0A /* LaunchScreen.storyboard */; };
 		FE24A65D25B5C2A30021EA0A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE24A65C25B5C2A30021EA0A /* MainViewController.swift */; };
 		FE24A66025B5D1CD0021EA0A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE24A65F25B5D1CD0021EA0A /* CustomTableViewCell.swift */; };
 		FE24A66325B5D65B0021EA0A /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE24A66225B5D65B0021EA0A /* PlaceModel.swift */; };
 		FE24A66625B5E6B70021EA0A /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE24A66525B5E6B70021EA0A /* NewPlaceViewController.swift */; };
 		FE45C9E925B8937E006E1A0B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE45C9E825B8937E006E1A0B /* StorageManager.swift */; };
+		FE6C2CC725BB799200DCD064 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE24A64D25B5BF080021EA0A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3A40F2D5BF8D18838B56EEB1 /* Pods-MyPlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaces.release.xcconfig"; path = "Target Support Files/Pods-MyPlaces/Pods-MyPlaces.release.xcconfig"; sourceTree = "<group>"; };
 		6696E5A7E34CD2C9A8A01828 /* Pods_MyPlaces.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaces.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		861EC0DAA826D9D02F2A2448 /* Pods-MyPlaces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaces.debug.xcconfig"; path = "Target Support Files/Pods-MyPlaces/Pods-MyPlaces.debug.xcconfig"; sourceTree = "<group>"; };
+		FE1EE87E25BB22B200DBF01B /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		FE24A64125B5BF080021EA0A /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE24A64425B5BF080021EA0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE24A64625B5BF080021EA0A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				FE24A66225B5D65B0021EA0A /* PlaceModel.swift */,
 				FE45C9E825B8937E006E1A0B /* StorageManager.swift */,
 				FE24A65F25B5D1CD0021EA0A /* CustomTableViewCell.swift */,
+				FE1EE87E25BB22B200DBF01B /* RatingControl.swift */,
 				FE24A64A25B5BF080021EA0A /* Main.storyboard */,
 				FE24A64D25B5BF080021EA0A /* Assets.xcassets */,
 				FE24A64F25B5BF080021EA0A /* LaunchScreen.storyboard */,
@@ -162,8 +165,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE6C2CC725BB799200DCD064 /* Assets.xcassets in Resources */,
 				FE24A65125B5BF080021EA0A /* LaunchScreen.storyboard in Resources */,
-				FE24A64E25B5BF080021EA0A /* Assets.xcassets in Resources */,
 				FE24A64C25B5BF080021EA0A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +224,7 @@
 				FE24A66625B5E6B70021EA0A /* NewPlaceViewController.swift in Sources */,
 				FE24A64525B5BF080021EA0A /* AppDelegate.swift in Sources */,
 				FE45C9E925B8937E006E1A0B /* StorageManager.swift in Sources */,
+				FE1EE87F25BB22B200DBF01B /* RatingControl.swift in Sources */,
 				FE24A66325B5D65B0021EA0A /* PlaceModel.swift in Sources */,
 				FE24A66025B5D1CD0021EA0A /* CustomTableViewCell.swift in Sources */,
 				FE24A64725B5BF080021EA0A /* SceneDelegate.swift in Sources */,
@@ -372,6 +376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = QZZ5827BGY;
 				INFOPLIST_FILE = MyPlaces/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -381,7 +386,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = t.begishev.MyPlaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -392,6 +397,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = QZZ5827BGY;
 				INFOPLIST_FILE = MyPlaces/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -401,7 +407,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = t.begishev.MyPlaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

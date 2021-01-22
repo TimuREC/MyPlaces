@@ -21,7 +21,10 @@ class NewPlaceViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		tableView.tableFooterView = UIView()
+		tableView.tableFooterView = UIView(frame: CGRect(x: .zero,
+														 y: .zero,
+														 width: tableView.frame.size.width,
+														 height: 1))
 		
 		placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
 		
