@@ -26,6 +26,7 @@ class MainViewController: UIViewController {
 	@IBOutlet weak var segmentedControl: UISegmentedControl!
 	@IBOutlet weak var reversedSortingButton: UIBarButtonItem!
 	
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.dataSource = self
@@ -68,6 +69,7 @@ class MainViewController: UIViewController {
 				  let destVC = segue.destination as? NewPlaceViewController
 			else { return }
 			destVC.currentPlace = isFiltering ? filteredPlaces[index] : places[index]
+			destVC.imageIsChanged = true
 		default:
 			return
 		}
@@ -109,13 +111,11 @@ extension MainViewController: UITableViewDataSource {
 		
 		let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
 		
-		// TO DO: - Refactor
-		cell.nameLabel.text = place.name
-		cell.locationLabel.text = place.location
-		cell.typeLabel.text = place.type
-		cell.imageOfPlace.image = UIImage(data: place.imageData!)
-		
-		cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
+		cell.configure(name: place.name,
+					   location: place.location,
+					   type: place.type,
+					   imageData: place.imageData!,
+					   rating: place.rating)
 
         return cell
     }

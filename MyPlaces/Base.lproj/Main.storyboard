@@ -35,7 +35,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="UzO-VA-lmf">
-                                                    <rect key="frame" x="95" y="12.5" width="284" height="60"/>
+                                                    <rect key="frame" x="95" y="12.5" width="183" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQU-Rx-YBB">
                                                             <rect key="frame" x="0.0" y="0.0" width="44" height="22"/>
@@ -57,10 +57,20 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="252" placeholderIntrinsicHeight="44" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gbA-iv-mos" customClass="RatingControl" customModule="MyPlaces" customModuleProvider="target">
+                                                    <rect key="frame" x="286" y="32.5" width="108" height="20"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="starSize">
+                                                            <size key="value" width="20" height="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="gbA-iv-mos" firstAttribute="centerY" secondItem="WjH-jf-1sy" secondAttribute="centerY" id="4Mt-2o-RUa"/>
                                                 <constraint firstItem="UzO-VA-lmf" firstAttribute="centerY" secondItem="WjH-jf-1sy" secondAttribute="centerY" id="YQh-9i-QYD"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="UzO-VA-lmf" secondAttribute="trailing" constant="15" id="aDg-pw-0uY"/>
+                                                <constraint firstItem="gbA-iv-mos" firstAttribute="leading" secondItem="UzO-VA-lmf" secondAttribute="trailing" constant="8" id="hdh-IS-Vq8"/>
+                                                <constraint firstItem="gbA-iv-mos" firstAttribute="trailing" secondItem="WjH-jf-1sy" secondAttribute="trailingMargin" id="iEc-yp-VaB"/>
                                                 <constraint firstItem="UzO-VA-lmf" firstAttribute="leading" secondItem="p0V-oF-7bf" secondAttribute="trailing" constant="15" id="iMM-ya-ubN"/>
                                                 <constraint firstItem="p0V-oF-7bf" firstAttribute="leading" secondItem="WjH-jf-1sy" secondAttribute="leading" constant="15" id="njy-hO-iRJ"/>
                                                 <constraint firstItem="p0V-oF-7bf" firstAttribute="centerY" secondItem="WjH-jf-1sy" secondAttribute="centerY" id="x1E-Er-ZSG"/>
@@ -70,6 +80,7 @@
                                             <outlet property="imageOfPlace" destination="p0V-oF-7bf" id="hYS-yU-0d2"/>
                                             <outlet property="locationLabel" destination="wbz-vt-gkl" id="jT7-7H-e2w"/>
                                             <outlet property="nameLabel" destination="pQU-Rx-YBB" id="FhT-Bx-SkU"/>
+                                            <outlet property="ratingControl" destination="gbA-iv-mos" id="kWO-Uy-KLg"/>
                                             <outlet property="typeLabel" destination="Xhi-JL-pFa" id="UI1-cj-DBo"/>
                                             <segue destination="73i-nW-wbK" kind="show" identifier="showDetail" id="oPe-cD-LTJ"/>
                                         </connections>
@@ -301,6 +312,7 @@
                         <outlet property="placeLocation" destination="Mld-ae-4w9" id="Oxt-xa-tPN"/>
                         <outlet property="placeName" destination="01W-xm-IQj" id="SEB-Xa-1CF"/>
                         <outlet property="placeType" destination="8fi-SH-n1S" id="sVD-nw-blu"/>
+                        <outlet property="ratingControl" destination="qZq-v9-MFj" id="HUQ-r9-5m1"/>
                         <outlet property="saveButton" destination="FC0-GP-WaT" id="eFk-ke-9Hv"/>
                     </connections>
                 </tableViewController>
@@ -351,12 +363,15 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="gbA-iv-mos">
+            <size key="intrinsicContentSize" width="252" height="44"/>
+        </designable>
         <designable name="qZq-v9-MFj">
             <size key="intrinsicContentSize" width="252" height="44"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="FcD-Zh-UQq"/>
+        <segue reference="oPe-cD-LTJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down" catalog="system" width="120" height="128"/>
