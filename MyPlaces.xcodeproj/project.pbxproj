@@ -19,6 +19,7 @@
 		FE24A66625B5E6B70021EA0A /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE24A66525B5E6B70021EA0A /* NewPlaceViewController.swift */; };
 		FE45C9E925B8937E006E1A0B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE45C9E825B8937E006E1A0B /* StorageManager.swift */; };
 		FE6C2CC725BB799200DCD064 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE24A64D25B5BF080021EA0A /* Assets.xcassets */; };
+		FE6C2CCB25BF1D2400DCD064 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6C2CCA25BF1D2400DCD064 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FE24A66225B5D65B0021EA0A /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		FE24A66525B5E6B70021EA0A /* NewPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
 		FE45C9E825B8937E006E1A0B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		FE6C2CCA25BF1D2400DCD064 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				FE24A64425B5BF080021EA0A /* AppDelegate.swift */,
 				FE24A64625B5BF080021EA0A /* SceneDelegate.swift */,
 				FE24A65C25B5C2A30021EA0A /* MainViewController.swift */,
+				FE6C2CCA25BF1D2400DCD064 /* MapViewController.swift */,
 				FE24A66525B5E6B70021EA0A /* NewPlaceViewController.swift */,
 				FE24A66225B5D65B0021EA0A /* PlaceModel.swift */,
 				FE45C9E825B8937E006E1A0B /* StorageManager.swift */,
@@ -224,6 +227,7 @@
 				FE24A66625B5E6B70021EA0A /* NewPlaceViewController.swift in Sources */,
 				FE24A64525B5BF080021EA0A /* AppDelegate.swift in Sources */,
 				FE45C9E925B8937E006E1A0B /* StorageManager.swift in Sources */,
+				FE6C2CCB25BF1D2400DCD064 /* MapViewController.swift in Sources */,
 				FE1EE87F25BB22B200DBF01B /* RatingControl.swift in Sources */,
 				FE24A66325B5D65B0021EA0A /* PlaceModel.swift in Sources */,
 				FE24A66025B5D1CD0021EA0A /* CustomTableViewCell.swift in Sources */,

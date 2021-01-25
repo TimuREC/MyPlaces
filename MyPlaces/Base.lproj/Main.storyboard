@@ -155,13 +155,34 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDR-FB-CVh">
+                                                    <rect key="frame" x="344" y="189" width="50" height="50"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="5nR-hR-4Qm"/>
+                                                        <constraint firstAttribute="width" constant="50" id="dJ7-DM-1vH"/>
+                                                    </constraints>
+                                                    <state key="normal" image="mappin.and.ellipse" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="25"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <segue destination="rb8-Jg-xxz" kind="presentation" identifier="showMap" id="g3F-6e-7Cz"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="bEN-Pt-lbd" firstAttribute="top" secondItem="OXr-hv-Mlp" secondAttribute="top" id="Fjf-KT-eKg"/>
                                                 <constraint firstItem="bEN-Pt-lbd" firstAttribute="leading" secondItem="OXr-hv-Mlp" secondAttribute="leading" id="JTk-34-KiM"/>
+                                                <constraint firstItem="QDR-FB-CVh" firstAttribute="bottom" secondItem="OXr-hv-Mlp" secondAttribute="bottomMargin" id="Jp3-NI-3qv"/>
                                                 <constraint firstAttribute="bottom" secondItem="bEN-Pt-lbd" secondAttribute="bottom" id="fTU-rl-Jy9"/>
                                                 <constraint firstAttribute="trailing" secondItem="bEN-Pt-lbd" secondAttribute="trailing" id="oEo-fG-k42"/>
+                                                <constraint firstItem="QDR-FB-CVh" firstAttribute="trailing" secondItem="OXr-hv-Mlp" secondAttribute="trailingMargin" id="rau-Cp-irV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -321,6 +342,48 @@
             </objects>
             <point key="canvasLocation" x="2237.68115942029" y="73.660714285714278"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="14U-dV-Iva">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="rb8-Jg-xxz" customClass="MapViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jWY-9m-uez">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IlG-9l-RT9">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnx-eO-L12">
+                                <rect key="frame" x="20" y="44" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="fNm-GY-Gsn"/>
+                                    <constraint firstAttribute="height" constant="40" id="uBn-hd-05a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" image="arrowshape.turn.up.left.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeViewController" destination="rb8-Jg-xxz" eventType="touchUpInside" id="96H-Dh-54D"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QPb-eb-W6j"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="IlG-9l-RT9" secondAttribute="bottom" id="5Ol-81-Rqu"/>
+                            <constraint firstItem="QPb-eb-W6j" firstAttribute="trailing" secondItem="IlG-9l-RT9" secondAttribute="trailing" id="HmQ-la-dnQ"/>
+                            <constraint firstItem="mnx-eO-L12" firstAttribute="leading" secondItem="QPb-eb-W6j" secondAttribute="leading" constant="20" id="Tex-s8-fI3"/>
+                            <constraint firstItem="IlG-9l-RT9" firstAttribute="leading" secondItem="QPb-eb-W6j" secondAttribute="leading" id="Yqm-QK-36G"/>
+                            <constraint firstItem="IlG-9l-RT9" firstAttribute="top" secondItem="jWY-9m-uez" secondAttribute="top" id="aOl-QB-dVP"/>
+                            <constraint firstItem="mnx-eO-L12" firstAttribute="top" secondItem="QPb-eb-W6j" secondAttribute="top" id="lRx-7v-0f6"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DGc-Ih-VyZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3075" y="74"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="2MC-2I-I5n">
             <objects>
@@ -375,6 +438,8 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down" catalog="system" width="120" height="128"/>
+        <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
+        <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <image name="placeholder" width="460" height="460"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
