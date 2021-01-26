@@ -114,15 +114,23 @@ class NewPlaceViewController: UITableViewController {
 		saveButton.isEnabled = true
 	}
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+		guard let identifier = segue.identifier,
+			  let mapVC = segue.destination as? MapViewController
+		else { return }
+		
+		mapVC.incomeSegueId = identifier
+		mapVC.mapViewControllerDelegate = self
+		
+		if identifier == "showPlace" {
+			mapVC.place.name = placeName.text!
+			mapVC.place.location = placeLocation.text
+			mapVC.place.type = placeType.text
+			mapVC.place.imageData = placeImage.image?.pngData()
+		}
     }
-    */
 
 }
 
@@ -162,6 +170,14 @@ extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
 		placeImage.contentMode = .scaleAspectFill
 		imageIsChanged = true
 		dismiss(animated: true, completion: nil)
+	}
+	
+}
+
+extension NewPlaceViewController: MapViewControllerDelegate {
+	
+	func getAddress(_ address: String?) {
+		placeLocation.text = address
 	}
 	
 }
